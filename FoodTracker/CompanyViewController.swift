@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CompanyViewController.swift
 //  FoodTracker
 //
 //  Created by Andrij Trubchanin on 11/10/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate,
+class CompanyViewController: UIViewController, UITextFieldDelegate,
     UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // MARK: Properties
@@ -16,6 +16,10 @@ class ViewController: UIViewController, UITextFieldDelegate,
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var ratingControl: RatingControl!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+
+    // for new item
+    var company: Company?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,7 +109,28 @@ class ViewController: UIViewController, UITextFieldDelegate,
     }
     
     @IBAction func setDefaultText(_ sender: UIButton) {
-        nameLabel.text = "Default Text"
+        nameLabel.text = "Alberta"
+        nameTextField.text = "Alberta"
     }
+
+    // MARK: Navigation
+    
+    // This method lets you configure a view controller before it's presented.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //if sender as AnyObject? === saveButton {
+        if let sender = sender as? UIBarButtonItem, sender === saveButton {
+            let name = nameTextField.text ?? ""
+            let photo = photoImageView.image
+            let rating = ratingControl.rating
+            company = Company(name: name, photo: photo, rating: rating)
+        //} else if let sender = sender as? UIBarButtonItem, sender === closeButton {
+        }
+    }
+    
+    @IBAction func cancelNewItem(_ sender: UIBarButtonItem) {
+        print("Cancel new item")
+    }
+    
+    
 }
 

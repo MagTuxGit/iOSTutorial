@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="OB4-wN-hDY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Kvh-tM-Ctk">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Company Table View Controller-->
+        <!--IT Companies-->
         <scene sceneID="Ilu-cR-dYj">
             <objects>
                 <tableViewController id="OB4-wN-hDY" customClass="CompanyTableViewController" customModule="FoodTracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6A5-OF-hec" id="U1h-Rt-YRK">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dafaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="QEf-eq-qaw">
@@ -57,15 +57,22 @@
                             <outlet property="delegate" destination="OB4-wN-hDY" id="MUa-8l-We8"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="IT Companies" id="b97-nK-dOh">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="gqm-aE-bfr">
+                            <connections>
+                                <segue destination="dit-O0-2dC" kind="presentation" identifier="AddItem" id="nRw-Qz-ypl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Un-Zh-Uq6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-722.39999999999998" y="122.78860569715144"/>
+            <point key="canvasLocation" x="216.80000000000001" y="122.78860569715144"/>
         </scene>
-        <!--View Controller-->
+        <!--New Company-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FoodTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CompanyViewController" customModule="FoodTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -75,7 +82,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="kHZ-oP-Xhx">
-                                <rect key="frame" x="16" y="70" width="343" height="495"/>
+                                <rect key="frame" x="16" y="84" width="343" height="495"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYb-Ec-6mk">
                                         <rect key="frame" x="121.5" y="0.0" width="100" height="21"/>
@@ -120,26 +127,77 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="kHZ-oP-Xhx" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="0fk-mM-60d"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kHZ-oP-Xhx" secondAttribute="trailing" id="1Nc-go-oc7"/>
                             <constraint firstItem="kHZ-oP-Xhx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Sgb-ao-Sdu"/>
-                            <constraint firstItem="kHZ-oP-Xhx" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="oeo-Tg-YbD"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="New Company" id="Dn9-E6-w36">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="B9b-WR-Wsq">
+                            <connections>
+                                <action selector="cancelNewItem:" destination="BYZ-38-t0r" id="8aq-0d-lDZ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="sQ5-sj-sH0">
+                            <connections>
+                                <action selector="saveNewItem:" destination="BYZ-38-t0r" id="1Sx-WX-3WB"/>
+                                <segue destination="D4r-qy-Lz3" kind="unwind" unwindAction="unwindToCompanyListWithSender:" id="sCd-iR-f18"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="nameLabel" destination="RYb-Ec-6mk" id="fxo-wI-xQJ"/>
                         <outlet property="nameTextField" destination="0AG-8M-ynh" id="chr-Uq-Us3"/>
                         <outlet property="photoImageView" destination="ypW-yq-kab" id="gZp-vP-X4u"/>
                         <outlet property="ratingControl" destination="wZg-w8-TXi" id="jjs-9I-kg0"/>
+                        <outlet property="saveButton" destination="sQ5-sj-sH0" id="9d4-No-2xZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="D4r-qy-Lz3" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="ExA-uy-5Vu">
                     <connections>
                         <action selector="selectImageFromPhotoLibrary:" destination="BYZ-38-t0r" id="aE8-XA-qab"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-98.400000000000006" y="122.78860569715144"/>
+            <point key="canvasLocation" x="1638" y="123"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vTx-al-Omk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kvh-tM-Ctk" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bas-Wr-Pop">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="OB4-wN-hDY" kind="relationship" relationship="rootViewController" id="TJI-pw-6BE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dVH-Y4-6as" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-502" y="123"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Apl-NG-aSw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dit-O0-2dC" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RYR-O0-v8x">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Pxo-ql-3bK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BpR-9K-2kp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="928.79999999999995" y="122.78860569715144"/>
         </scene>
     </scenes>
     <resources>

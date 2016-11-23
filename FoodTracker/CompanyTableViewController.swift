@@ -126,4 +126,13 @@ class CompanyTableViewController: UITableViewController {
     }
     */
 
+    @IBAction func unwindToCompanyList(sender: UIStoryboardSegue) {
+        // sender.source is UIViewController
+        if let sourceViewController = sender.source as? CompanyViewController, let company = sourceViewController.company {
+            // get index of new item in table view
+            let newIndexPath = IndexPath(row: companies.count, section: 0)
+            companies.append(company)
+            tableView.insertRows(at: [newIndexPath], with: .bottom)
+        }
+    }
 }
