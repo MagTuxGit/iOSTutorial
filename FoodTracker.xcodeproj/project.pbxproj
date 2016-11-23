@@ -15,9 +15,9 @@
 		874ABDB81DD4ACC2004AFF9C /* FoodTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874ABDB71DD4ACC2004AFF9C /* FoodTrackerTests.swift */; };
 		8770F5991DDB2BEF00288563 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8770F5981DDB2BEF00288563 /* RatingControl.swift */; };
 		879041541DE4196D00A5DF43 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879041531DE4196D00A5DF43 /* Company.swift */; };
-		879041551DE4196D00A5DF43 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879041531DE4196D00A5DF43 /* Company.swift */; };
 		879041571DE4283D00A5DF43 /* CompanyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879041561DE4283D00A5DF43 /* CompanyTableViewCell.swift */; };
 		879041591DE4478B00A5DF43 /* CompanyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879041581DE4478B00A5DF43 /* CompanyTableViewController.swift */; };
+		8790415A1DE565CD00A5DF43 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879041531DE4196D00A5DF43 /* Company.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -226,7 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				874ABDB81DD4ACC2004AFF9C /* FoodTrackerTests.swift in Sources */,
-				879041551DE4196D00A5DF43 /* Company.swift in Sources */,
+				8790415A1DE565CD00A5DF43 /* Company.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
