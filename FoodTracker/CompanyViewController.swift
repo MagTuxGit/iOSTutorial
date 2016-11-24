@@ -21,11 +21,13 @@ class CompanyViewController: UIViewController, UITextFieldDelegate,
     // for new item
     var company: Company?
     
+    // MARK: Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Handle the text field’s user input through delegate callbacks.
         nameTextField.delegate = self
+        checkValidCompanyName()
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,10 +43,24 @@ class CompanyViewController: UIViewController, UITextFieldDelegate,
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        checkValidCompanyName()
+        navigationItem.title = textField.text
         nameLabel.text = textField.text
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        // Disable the Save button while editing.
+        saveButton.isEnabled = false
+    }
+    
+    func checkValidCompanyName() {
+        // Disable the Save button if the text field is empty.
+        let text = nameTextField.text ?? ""
+        saveButton.isEnabled = !text.isEmpty
+    }
+    
     // MARK: UIImagePickerControllerDelegate
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         // Dismiss the picker if the user canceled.
         dismiss(animated: true)
@@ -111,6 +127,7 @@ class CompanyViewController: UIViewController, UITextFieldDelegate,
     @IBAction func setDefaultText(_ sender: UIButton) {
         nameLabel.text = "Alberta"
         nameTextField.text = "Alberta"
+        checkValidCompanyName()
     }
 
     // MARK: Navigation
@@ -127,10 +144,8 @@ class CompanyViewController: UIViewController, UITextFieldDelegate,
         }
     }
     
-    @IBAction func cancelNewItem(_ sender: UIBarButtonItem) {
-        print("Cancel new item")
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
     }
-    
-    
 }
 

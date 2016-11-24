@@ -135,7 +135,7 @@
                     <navigationItem key="navigationItem" title="New Company" id="Dn9-E6-w36">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="B9b-WR-Wsq">
                             <connections>
-                                <action selector="cancelNewItem:" destination="BYZ-38-t0r" id="8aq-0d-lDZ"/>
+                                <action selector="cancel:" destination="BYZ-38-t0r" id="h15-NH-jLi"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="sQ5-sj-sH0">
