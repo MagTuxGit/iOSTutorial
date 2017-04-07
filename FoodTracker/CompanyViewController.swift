@@ -27,6 +27,15 @@ class CompanyViewController: UIViewController, UITextFieldDelegate,
         
         // Handle the text field’s user input through delegate callbacks.
         nameTextField.delegate = self
+        
+        if let company = company {
+            navigationItem.title = company.name
+            nameLabel.text = company.name
+            nameTextField.text = company.name
+            photoImageView.image = company.photo
+            ratingControl.rating = company.rating
+        }
+        
         checkValidCompanyName()
     }
 
@@ -145,7 +154,12 @@ class CompanyViewController: UIViewController, UITextFieldDelegate,
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        let isPresentingInAddMode = presentingViewController is UINavigationController
+        if isPresentingInAddMode {
+            dismiss(animated: true, completion: nil)
+        } else {
+            navigationController!.popViewController(animated: true)
+        }
     }
 }
 

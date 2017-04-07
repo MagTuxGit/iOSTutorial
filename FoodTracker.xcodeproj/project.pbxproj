@@ -65,6 +65,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8735C1801E97ABC100162196 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				874ABDA21DD4ACC1004AFF9C /* AppDelegate.swift */,
+				874ABDA91DD4ACC1004AFF9C /* Assets.xcassets */,
+				874ABDAB1DD4ACC1004AFF9C /* LaunchScreen.storyboard */,
+				874ABDAE1DD4ACC2004AFF9C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		874ABD961DD4ACC1004AFF9C = {
 			isa = PBXGroup;
 			children = (
@@ -86,16 +97,13 @@
 		874ABDA11DD4ACC1004AFF9C /* FoodTracker */ = {
 			isa = PBXGroup;
 			children = (
-				874ABDA21DD4ACC1004AFF9C /* AppDelegate.swift */,
+				8735C1801E97ABC100162196 /* Supporting Files */,
 				874ABDA41DD4ACC1004AFF9C /* CompanyViewController.swift */,
 				874ABDA61DD4ACC1004AFF9C /* Main.storyboard */,
 				879041581DE4478B00A5DF43 /* CompanyTableViewController.swift */,
 				879041561DE4283D00A5DF43 /* CompanyTableViewCell.swift */,
 				879041531DE4196D00A5DF43 /* Company.swift */,
 				8770F5981DDB2BEF00288563 /* RatingControl.swift */,
-				874ABDA91DD4ACC1004AFF9C /* Assets.xcassets */,
-				874ABDAB1DD4ACC1004AFF9C /* LaunchScreen.storyboard */,
-				874ABDAE1DD4ACC2004AFF9C /* Info.plist */,
 			);
 			path = FoodTracker;
 			sourceTree = "<group>";
@@ -154,7 +162,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Andrij Trubchanin";
 				TargetAttributes = {
 					874ABD9E1DD4ACC1004AFF9C = {
@@ -278,6 +286,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -328,6 +337,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

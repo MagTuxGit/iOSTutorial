@@ -17,13 +17,17 @@ class CompanyTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadSampleCompanies()
-        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
+        
+        if let savedCompanies = loadCompanies() {
+            companies += savedCompanies
+        } else {
+            loadSampleCompanies()
+        }
     }
     
     func loadSampleCompanies() {
@@ -81,58 +85,85 @@ class CompanyTableViewController: UITableViewController {
         return cell
     }
 
-    /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
 
-    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            companies.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
+        saveCompanies()
     }
-    */
 
-    /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+        let movedObject = companies[fromIndexPath.row]
+        companies.remove(at: fromIndexPath.row)
+        companies.insert(movedObject, at: to.row)
+        //NSLog("%@", "\(fromIndexPath.row) => \(to.row) \(companies)")
+        saveCompanies()
     }
-    */
 
-    /*
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
     }
-    */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier=="AddItem" {
+            
+        } else
+        if segue.identifier=="ShowDetail" {
+            let companyViewController = segue.destination as! CompanyViewController
+            if let selectedCell = sender as? CompanyTableViewCell {
+                let indexPath = tableView.indexPath(for: selectedCell)!
+                companyViewController.company = companies[indexPath.row]
+            }
+        }
     }
-    */
 
     @IBAction func unwindToCompanyList(sender: UIStoryboardSegue) {
         // sender.source is UIViewController
         if let sourceViewController = sender.source as? CompanyViewController, let company = sourceViewController.company {
-            // get index of new item in table view
-            let newIndexPath = IndexPath(row: companies.count, section: 0)
-            companies.append(company)
-            tableView.insertRows(at: [newIndexPath], with: .bottom)
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                companies[selectedIndexPath.row] = company
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            } else {
+                // get index of new item in table view
+                let newIndexPath = IndexPath(row: companies.count, section: 0)
+                companies.append(company)
+                tableView.insertRows(at: [newIndexPath], with: .bottom)
+            }
+            saveCompanies()
         }
     }
+    
+    // MARK: NSCoding
+    
+    func saveCompanies() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(companies, toFile: Company.archiveURL.path)
+        if !isSuccessfulSave {
+            print("Failed to save companies...")
+        }
+    }
+    
+    func loadCompanies() -> [Company]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Company.archiveURL.path) as? [Company]
+    }
+    
+    
 }
